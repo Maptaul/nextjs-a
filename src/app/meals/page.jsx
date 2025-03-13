@@ -33,8 +33,8 @@ export default async function MealsPage({ searchParams }) {
   const meals = await fetchMeals();
 
   return (
-    <div className="container mx-auto px-4">
-      <h1 className="text-3xl font-bold ">All Meals</h1>
+    <div className="container mx-auto px-4 mt-10">
+      <h1 className="text-3xl font-bold text-center ">All Meals</h1>
       <div className="flex justify-center my-8">
         <MealSearchInput />
       </div>
