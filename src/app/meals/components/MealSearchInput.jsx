@@ -1,6 +1,6 @@
 "use client";
 import { usePathname, useRouter } from "next/navigation";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function MealSearchInput() {
   //   const [meals, setMeals] = useState([]);
@@ -16,7 +16,8 @@ export default function MealSearchInput() {
   return (
     <div>
       <input
-        className="text-black"
+        className="text-black bg-gray-200 p-2 rounded-lg w-96"
+        type="text"
         value={search}
         onChange={(e) => setSearch(e.target.value)}
       />

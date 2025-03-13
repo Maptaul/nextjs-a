@@ -1,7 +1,7 @@
+import { Roboto } from "next/font/google";
+import Image from "next/image";
 import Link from "next/link";
 import MealSearchInput from "./components/MealSearchInput";
-import Image from "next/image";
-import { Roboto } from "next/font/google";
 
 const roboto = Roboto({
   weight: ["400"],
@@ -33,23 +33,34 @@ export default async function MealsPage({ searchParams }) {
   const meals = await fetchMeals();
 
   return (
-    <div>
-      <div className="flex justify-center">
+    <div className="container mx-auto px-4">
+      <h1 className="text-3xl font-bold ">All Meals</h1>
+      <div className="flex justify-center my-8">
         <MealSearchInput />
       </div>
-      <div className="grid grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         {meals?.map((singleMeal) => {
           return (
-            <div key={singleMeal?.idMeal} className={roboto.className}>
+            <div
+              key={singleMeal?.idMeal}
+              className={`bg-white shadow-md rounded-lg overflow-hidden ${roboto.className}`}
+            >
               <Image
                 src={singleMeal?.strMealThumb}
-                width={641}
-                height={641}
+                width={400}
+                height={400}
                 alt={singleMeal?.strMeal}
+                className="w-full h-48 object-cover"
               />
-              <p className="text-2xl font-bold">{singleMeal?.strMeal}</p>
-              <p>{singleMeal?.strInstructions}</p>
-              <Link href={`/meals/${singleMeal.idMeal}`}>Details</Link>
+              <div className="p-4">
+                <h2 className="text-xl font-bold mb-2">
+                  {singleMeal?.strMeal}
+                </h2>
+                <p className="text-gray-700 text-base mb-4">
+                  {singleMeal?.strInstructions.substring(0, 100)}...
+                </p>
+                <Link href={`/meals/${singleMeal.idMeal}`}>Details</Link>
+              </div>
             </div>
           );
         })}
