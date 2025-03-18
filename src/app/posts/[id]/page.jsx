@@ -25,7 +25,9 @@ export default async function SinglePost({ params }) {
   return (
     <div className="max-w-md mx-auto mt-3 bg-gray-300 shadow-lg rounded-lg overflow-hidden">
       <div className="p-4">
-        <h1 className="text-2xl font-bold mb-2">{singlePost.title}</h1>
+        <h1 className="text-2xl text-rose-500 font-bold mb-2">
+          {singlePost.title}
+        </h1>
         <p className="text-gray-700">{singlePost.body}</p>
       </div>
     </div>
